@@ -121,12 +121,8 @@ const formatMovementDate = function (date, locale) {
   if (daysPassed === 0) return 'Today';
   if (daysPassed === 1) return 'Yesterday';
   if (daysPassed <= 7) return `${daysPassed} days ago!`;
-  // else {
-  //   const month = `${date.getMonth() + 1}`.padStart(2, 0);
-  //   const day = `${date.getDate()}`.padStart(2, 0);
-  //   const year = date.getFullYear();
-  //   return `${month}/${day}/${year}`;
-  // }
+
+
   return new Intl.DateTimeFormat(locale).format(date);
 };
 
@@ -240,12 +236,6 @@ const startLogoutTimer = function () {
 // Event handlers
 let currentAccount, timer;
 
-// FAKE ALWAYS LOGGED IN
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
-
-
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -271,7 +261,6 @@ btnLogin.addEventListener('click', function (e) {
       year: 'numeric',
       weekday: 'long',
     };
-    // const locale = navigator.language;
 
     labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(now);
 
@@ -356,7 +345,6 @@ btnClose.addEventListener('click', function (e) {
       acc => acc.username === currentAccount.username
     );
     console.log(index);
-    // .indexOf(23)
 
     // Delete account
     accounts.splice(index, 1);
